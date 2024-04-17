@@ -4,9 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        Primary: "#004E98",
-        Secondary: "#FFA500",
-        Background: "#F5F5F5",
+        Primary: "#0B0C10",
+        Secondary: "#1F2833",
+        Title: "#66FCF1",
+        Text: "#C5C6C7",
+        Button: "#45A29E",
       },
     },
   },
