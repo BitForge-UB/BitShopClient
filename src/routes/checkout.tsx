@@ -1,20 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 import api from "../lib/apiHandler";
+import React from "react";
+
+import { useQuery } from '@tanstack/react-query'
 
 export const Layout: React.FC<{}> = () => {  
-  const fetchData = async () => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: () =>
+      api.get("/products/browse/monster").then((res) => {
+        return res.data;
+      }),
+  })
 
-    api.get("/products").then((response) => {
-      if (response.status === 200) {
-        console.log(response.data);
-      }
-    });
-  };
+  if (isPending) return 'Loading...'
 
-  fetchData();
+  if (error) return 'An error has occurred: ' + error.message
 
   return (
-    <></>
+    <>
+      <p>test</p>
+      {data.map((item: string) => <p>{item}</p>)}
+    </>
   );
 };
 
