@@ -2,8 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+import {
+  RouterProvider,
+  createRouter,
+  ErrorComponent,
+} from "@tanstack/react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routeTree } from "./routeTree.gen";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -11,16 +17,42 @@ declare module "@tanstack/react-router" {
   }
 }
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+
+      retry: 3,
+    },
+    mutations: {
+      retry: 1,
+    },
+  },
+});
+
 const router = createRouter({
   routeTree,
+  context: {
+    queryClient,
+  },
   defaultPreload: "intent",
-  // Since we're using React Query, we don't want loader calls to ever be stale
-  // This will ensure that the loader is always called when the route is preloaded or visited
   defaultPreloadStaleTime: 0,
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
+const InnerApp: React.FC = () => {
+  return (
+    <>
+      <RouterProvider router={router} defaultErrorComponent={ErrorComponent} />
+    </>
+  );
+};
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <InnerApp />
+    </QueryClientProvider>
   </React.StrictMode>
 );
