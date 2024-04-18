@@ -1,20 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import api from "../lib/apiHandler";
+import { useProducts } from "../hooks/useProduct";
 
-export const Layout: React.FC<{}> = () => {  
-  const fetchData = async () => {
+export const Layout: React.FC = () => {
+  const { isFetching, data, error } = useProducts(); // Example, replace with your own hook
 
-    api.get("/products").then((response) => {
-      if (response.status === 200) {
-        console.log(response.data);
-      }
-    });
-  };
+  if (isFetching) return "Loading...";
 
-  fetchData();
+  if (error) return "An error has occurred: " + error.message;
 
   return (
-    <></>
+    <>
+      <p>test</p>
+      {data.map((item: string) => (
+        <p>{item}</p>
+      ))}
+    </>
   );
 };
 
