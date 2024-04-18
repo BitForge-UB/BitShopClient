@@ -5,9 +5,6 @@ import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-
 const VITE_SERVER_PORT: number = parseInt(
   process.env.VITE_SERVER_PORT || "5173",
   10
