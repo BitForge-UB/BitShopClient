@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { FiShoppingCart } from "react-icons/fi";
 import { Search } from "./Search";
+import bitshopLogo from "../assets/img/bitshop.svg";
+
 
 
 const Navbar: React.FC = () => {
@@ -21,11 +23,11 @@ const Navbar: React.FC = () => {
 
 
   return (
-    <nav className='bg-Primary flex justify-center relative h-12'>
-      <Link to="/" className='absolute left-10 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-Title'>
-        <h1 className=''>BITSHOP</h1>
+    <nav className='bg-Primary flex justify-center relative h-14'>
+      <Link to="/" className='absolute left-16 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-Title'>
+        <img className='w-24 ' src={bitshopLogo} alt="" />
       </Link>
-      <div className="flex flex-row items-center justify-between gap-4 text-Title border-b border-b-zinc-800">
+      <div className="flex flex-row items-center justify-between gap-4 text-Title ml-12">
         <Search />
       </div>
       <div className='absolute right-8 top-1/2 transform -translate-y-1/2 text-Title' onMouseEnter={handleCartHover} onMouseLeave={handleCartHover}>
