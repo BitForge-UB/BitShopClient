@@ -18,6 +18,12 @@ const Search: React.FC = () => {
 
   if (error) return <p>An error has occurred: {error.message}</p>;
 
+  if (!data) return (
+    <div>
+      <p>No data found</p>
+    </div>
+  )
+
   return (
     <div>
       <p>Search query: {q}</p>
