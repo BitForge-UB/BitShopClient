@@ -6,13 +6,15 @@ type Props = {
   
   const Product: React.FC<Props> = ({ name, img, price }) => {
     return (
-      <div>
-        <div className="flex justify-between">
-            <p>{name}</p>
-            <p>{Math.ceil(price)} kr</p>
+      <div className="h-52 rounded-lg border-2 border-gray-300 shadow-md">
+        <div className="flex justify-between items-center h-14 border-b-2 border-gray-300 gap-1 p-1">
+            <p className="break-words">{name}</p>
+            <p className="text-nowrap">{Math.ceil(price)} kr</p>
         </div>
-        <div className="h-40 flex">
-            <img src={img} alt={name} className="max-h-40 max-w-full mx-auto object-cover"/>
+        <div className="h-36 flex flex-col justify-center p-2">
+            <div className="">
+                <img src={img} alt={name} className="max-h-32 max-w-full mx-auto object-cover"/>
+            </div>
         </div>
       </div>
     );

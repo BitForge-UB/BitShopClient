@@ -11,11 +11,9 @@ export const Layout: React.FC = () => {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4 m-4">
         {data.map((item: { id: string, title: string, imagePath: string, price: number}) => (
-          <div key={item.id}>
-            <Product name={item.title} img={item.imagePath} price={item.price} />
-          </div>
+          <Product name={item.title} img={item.imagePath} price={item.price}  key={item.id} />
         ))}
       </div>
     </>
