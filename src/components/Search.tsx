@@ -9,7 +9,7 @@ export const Search: React.FC = () => {
       <input
         type="text"
         placeholder="Search for products..."
-        className="p-2 bg-transparent border border-zinc-900 hover:border-zinc-800 focus:border-blue-700 transition-all duration-100 rounded-lg"
+        className="p-2 bg-transparent border text-Title border-Title hover:border-Title focus:border-Title transition-all duration-100 rounded-lg"
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
@@ -23,9 +23,9 @@ export const Search: React.FC = () => {
       />
 
       {suggestions.length > 0 && (
-        <div className="absolute z-10 bg-white w-full border border-zinc-900">
+        <div className="absolute z-10 bg-white w-full border border-Title">
           {suggestions.map((suggestion) => (
-            <div className="p-2 border-b border-zinc-900">{suggestion}</div>
+            <div className="p-2 border-b border-Title">{suggestion}</div>
           ))}
         </div>
       )}

@@ -1,6 +1,6 @@
 import { Outlet } from "@tanstack/react-router";
 import { createRootRoute } from "@tanstack/react-router";
-import { Navbar } from "../components/Navbar";
+import  Navbar  from "../components/Navbar";
 
 export const Layout: React.FC = () => {
   return (
