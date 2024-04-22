@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useProducts } from "../hooks/useProduct";
 import Product from "../components/Product";
+import Chatbot from "../components/Chatbot";
 
 export const Layout: React.FC = () => {
 
@@ -17,13 +18,15 @@ export const Layout: React.FC = () => {
         <h2 className="text-2xl text-center ">Ser dette riktig ut?</h2>
         <div className="grid grid-cols-2 gap-4 m-4">
           {data.map((item: { id: string, title: string, imagePath: string, price: number}) => (
-            <div>
-              <Product name={item.title} img={item.imagePath} price={item.price} key={item.id} />
+            <div key={item.id}>
+              <Product name={item.title} img={item.imagePath} price={item.price}  />
               <button className="bg-Button text-white rounded-lg p-1 w-full mt-2">Fjern</button>
             </div>
           ))}
         </div>
-        <button className="bg-Button text-white rounded-lg p-2 m-4 w-full mt-2">Bekreft</button>
+        <div className="p-4">
+          <button className="bg-Button text-white rounded-lg p-2 w-full mt-2">Bekreft</button>
+        </div>
       </div>
     </>
   );
