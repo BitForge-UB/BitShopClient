@@ -33,11 +33,12 @@ const Chatbot = () => {
 
     return (
         <div className="rounded-lg border-2 border-black shadow-md bg-white fixed bottom-4 right-4 w-96 h-96">
-            <button className="bg-Button text-white rounded-lg p-2 w-full" onClick={() => setOpen(false)}>Lukk</button>
+            <div className='flex gap-4 p-2 border-b-2 border-Text'>
+                <button className="bg-Button text-white rounded-lg p-2 w-full" onClick={() => setOpen(false)}>Lukk</button>
+                <button className="bg-Button text-white rounded-lg p-2 w-full" onClick={handleButtonClick}>Send</button>
+            </div>
             <textarea className="h-32 w-full p-2" placeholder="Skriv melding..."></textarea>
-            <button className="bg-Button text-white rounded-lg p-2 w-full mt-2 mb-2" 
-                onClick={handleButtonClick}
-                >Send</button>
+           
             <div>
                 <h2 className="text-center text-xl border-b-2 border-Text">Svar</h2>
                 <p className='p-4 pt-2'>{isFetching || !haveSent ? "Svar kommer her" :  data }</p>
