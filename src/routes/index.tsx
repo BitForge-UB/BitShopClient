@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useProducts } from "../hooks/useProduct";
 import Product from "../components/Product";
+import { useState } from "react";
 
 export const Homepage: React.FC = () => {
   const { isFetching, data, error } = useProducts(); // Example, replace with your own hook
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   if (isFetching) return "Loading...";
 
@@ -24,12 +26,23 @@ export const Homepage: React.FC = () => {
     <>
       <div className="grid grid-cols-2 gap-4 m-4">
         {filteredProducts.map((item) => (
-          <Product
-            name={item.title}
-            img={item.imagePath}
-            price={item.price}
-            key={item.id}
-          />
+          <div
+            onClick={() =>
+              setSelectedIds(
+                selectedIds.includes(item.id)
+                  ? selectedIds.filter((id) => id !== item.id)
+                  : [...selectedIds, item.id]
+              )
+            }
+          >
+            <Product
+              name={item.title}
+              img={item.imagePath}
+              price={item.price}
+              key={item.id}
+              isSelected={selectedIds.includes(item.id)}
+            />
+          </div>
         ))}
       </div>
     </>

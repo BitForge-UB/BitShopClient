@@ -10,54 +10,54 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as LayoutImport } from "./routes/__root";
-import { Route as HomeImport } from "./routes/home";
-import { Route as CheckoutImport } from "./routes/checkout";
-import { Route as IndexImport } from "./routes/index";
+import { Route as rootRoute } from './routes/__root'
+import { Route as HomeImport } from './routes/home'
+import { Route as CheckoutImport } from './routes/checkout'
+import { Route as IndexImport } from './routes/index'
+import { Route as SearchIndexImport } from './routes/search/index'
 
 // Create/Update Routes
 
-const LayoutRoute = LayoutImport.update({
-  path: "/layout",
-  getParentRoute: () => rootRoute,
-} as any);
-
 const HomeRoute = HomeImport.update({
-  path: "/home",
+  path: '/home',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const CheckoutRoute = CheckoutImport.update({
-  path: "/checkout",
+  path: '/checkout',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const IndexRoute = IndexImport.update({
-  path: "/",
+  path: '/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
+
+const SearchIndexRoute = SearchIndexImport.update({
+  path: '/search/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      preLoaderRoute: typeof IndexImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/checkout": {
-      preLoaderRoute: typeof CheckoutImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/home": {
-      preLoaderRoute: typeof HomeImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/layout": {
-      preLoaderRoute: typeof LayoutImport;
-      parentRoute: typeof rootRoute;
-    };
+    '/': {
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/checkout': {
+      preLoaderRoute: typeof CheckoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/home': {
+      preLoaderRoute: typeof HomeImport
+      parentRoute: typeof rootRoute
+    }
+    '/search/': {
+      preLoaderRoute: typeof SearchIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -67,7 +67,7 @@ export const routeTree = rootRoute.addChildren([
   IndexRoute,
   CheckoutRoute,
   HomeRoute,
-  LayoutRoute,
-]);
+  SearchIndexRoute,
+])
 
 /* prettier-ignore-end */

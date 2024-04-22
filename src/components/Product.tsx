@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   name: string;
   img: string;
   price: number;
+  isSelected: boolean;
 };
 
-const Product: React.FC<Props> = ({ name, img, price }) => {
-  const [isSelected, setIsSelected] = useState(false);
-
+const Product: React.FC<Props> = ({ name, img, price, isSelected }) => {
   if (!isSelected) {
     return (
-      <div
-        className="h-52 rounded-lg border-2 border-gray-300 shadow-md"
-        onClick={() => setIsSelected(true)}
-      >
+      <div className="h-52 rounded-lg border-2 border-gray-300 shadow-md">
         <div className="flex justify-between items-center h-14 border-b-2 border-gray-300 gap-1 p-1">
           <p className="break-words">{name}</p>
           <p className="text-nowrap">{Math.ceil(price)} kr</p>
@@ -33,10 +29,7 @@ const Product: React.FC<Props> = ({ name, img, price }) => {
   }
   if (isSelected) {
     return (
-      <div
-        className="h-52 rounded-lg border-Title shadow-md border-4"
-        onClick={() => setIsSelected(false)}
-      >
+      <div className="h-52 rounded-lg border-Title shadow-md border-4">
         <div className="flex justify-between items-center h-14 border-b-2 border-gray-300 gap-1 p-1">
           <p className="break-words">{name}</p>
           <p className="text-nowrap">{Math.ceil(price)} kr</p>
