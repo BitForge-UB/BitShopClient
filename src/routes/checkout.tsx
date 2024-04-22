@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useProducts } from "../hooks/useProduct";
 import Product from "../components/Product";
-import Chatbot from "../components/Chatbot";
 
 export const Layout: React.FC = () => {
 
@@ -19,7 +18,7 @@ export const Layout: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 m-4">
           {data.map((item: { id: string, title: string, imagePath: string, price: number}) => (
             <div key={item.id}>
-              <Product name={item.title} img={item.imagePath} price={item.price}  />
+              <Product name={item.title} img={item.imagePath} price={item.price} isSelected={false} />
               <button className="bg-Button text-white rounded-lg p-1 w-full mt-2">Fjern</button>
             </div>
           ))}
