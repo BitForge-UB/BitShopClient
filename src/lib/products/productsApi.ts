@@ -1,7 +1,7 @@
 import api from "../apiHandler";
 
 export const getProducts = async () => {
-  const response = await api.get("/products");
+  const response = await api.get("/products?&page_size=100");
   return response.data;
 };
 
