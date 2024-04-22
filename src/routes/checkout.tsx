@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useProducts } from "../hooks/useProduct";
 import Product from "../components/Product";
-import Chatbot from "../components/Chatbot";
 
 export const Layout: React.FC = () => {
 
