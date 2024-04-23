@@ -14,3 +14,15 @@ export const getAi = async (prompt: string) => {
   const response = await api.get("/ai/" + prompt);
   return response.data;
 }
+
+export const getProductId = async (id: string) => {
+  const response = await api.get("/products/" + id);
+  return response.data;
+}
+
+export const sendOrder = async (order: Order[]) => {
+  const response = await api.post("/checkout", {
+    body: JSON.stringify(order),
+  });
+  return response.data;
+}
