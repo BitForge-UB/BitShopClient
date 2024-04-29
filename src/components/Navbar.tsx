@@ -27,8 +27,7 @@ const Navbar: React.FC = () => {
       </div>
       <div
         className="absolute right-8 top-1/2 transform -translate-y-1/2 text-Title"
-        onMouseEnter={handleCartHover}
-        onMouseLeave={handleCartHover}
+        onClick={handleCartHover}
       >
         <div className="relative">
           <FiShoppingCart />
@@ -37,9 +36,9 @@ const Navbar: React.FC = () => {
           </span>
         </div>
         {isCartOpen && (
-          <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+          <div className="absolute right-0 mt-2 w-[35rem] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 text-balance">
             <div
-              className="py-1"
+              className="py-1 flex justify-between flex-col w-full"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="options-menu"
@@ -47,10 +46,17 @@ const Navbar: React.FC = () => {
               {productStore.selectedProducts.map((product: ProductType) => (
                 <p
                   key={product.id}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  className="flex px-4 py-2 text-xl text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   role="menuitem"
                 >
-                  {product.title} - ${product.price}
+                  <div>
+                    <img
+                      src={product.imagePath}
+                      alt="Fant Ikke Bildet"
+                      className="max-h-32 max-w-32 object-cover min-h-32 min-w-32"
+                    />
+                  </div>
+                  {product.title} - kr {Math.ceil(product.price)}
                 </p>
               ))}
             </div>
