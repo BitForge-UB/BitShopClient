@@ -27,12 +27,14 @@ const Chatbot = () => {
 
   if (!open)
     return (
+ Task-6_ProducktCard-component
       <button
         className="bg-Button text-white rounded-lg p-2 w-32 mt-2 fixed bottom-4 left-4 border-2 border-black"
         onClick={() => setOpen(true)}
       >
         Chat
       </button>
+
     );
 
   if (error) return "An error has occurred: " + error.message;
