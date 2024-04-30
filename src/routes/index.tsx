@@ -59,6 +59,7 @@ export const Homepage: React.FC = () => {
               img={item.imagePath}
               price={item.price}
               key={item.id}
+              quantity={item.quantity}
               isSelected={productStore.selectedProducts.some(
                 (selectedProduct) => selectedProduct.id === item.id
               )}

@@ -3,4 +3,5 @@ export type ProductType = {
   title: string;
   imagePath: string;
   price: number;
+  quantity: number;
 };

@@ -6,6 +6,7 @@ interface ProductState {
   addProduct: (product: ProductType) => void;
   removeProduct: (product: ProductType) => void;
   clearProducts: () => void;
+  changeQuantity: (product: ProductType, quantity: number) => void;
 }
 
 export const useProductStore = create<ProductState>()((set) => ({
@@ -21,7 +22,10 @@ export const useProductStore = create<ProductState>()((set) => ({
           JSON.stringify([...state.selectedProducts, product])
         ),
         {
-          selectedProducts: [...state.selectedProducts, product],
+          selectedProducts: [
+            ...state.selectedProducts,
+            { ...product, quantity: 1 },
+          ],
         }
       )
     ),
@@ -56,5 +60,18 @@ export const useProductStore = create<ProductState>()((set) => ({
           selectedProducts: [],
         }
       )
+    ),
+
+  changeQuantity: (product: ProductType, quantity: number) =>
+    set(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (state: { selectedProducts: any }) => ({
+        selectedProducts: state.selectedProducts.map(
+          (selectedProduct: ProductType) =>
+            selectedProduct.id === product.id
+              ? { ...selectedProduct, quantity }
+              : selectedProduct
+        ),
+      })
     ),
 }));
