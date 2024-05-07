@@ -18,17 +18,18 @@ const Search: React.FC = () => {
 
   if (error) return <p>An error has occurred: {error.message}</p>;
 
-  if (!data) return (
-    <div>
-      <p>No data found</p>
-    </div>
-  )
+  if (!data)
+    return (
+      <div>
+        <p>No data found</p>
+      </div>
+    );
 
   return (
     <div>
       <p>Search query: {q}</p>
 
-      {data.map((item: string) => (
+      {data.map((item: { title: string; imagePath: string }) => (
         <>
           <h1>{item.title}</h1>
 

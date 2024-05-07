@@ -5,7 +5,7 @@ type Props = {
   img: string;
   price: number;
   isSelected: boolean;
-  quantity: number;
+  quantity?: number;
 };
 
 const Product: React.FC<Props> = ({ name, img, price, isSelected }) => {

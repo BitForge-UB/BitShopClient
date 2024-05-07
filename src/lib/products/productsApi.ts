@@ -1,3 +1,4 @@
+import { Order } from "../../types/order";
 import api from "../apiHandler";
 
 export const getProducts = async () => {
